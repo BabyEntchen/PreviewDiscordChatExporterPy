@@ -310,3 +310,7 @@ class ParseMarkdown:
                     output.append(word)
             content = " ".join(output)
             self.content = re.sub("<br>", "\n", content)
+
+
+    # def parse_preview(self):
+    #     print(self.content)

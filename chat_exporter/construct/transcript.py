@@ -17,6 +17,7 @@ from chat_exporter.ext.discord_utils import DiscordUtils
 from chat_exporter.ext.html_generator import (
     fill_out, total, channel_topic, meta_data_temp, fancy_time, channel_subject, PARSE_MODE_NONE
 )
+from chat_exporter.construct.preview import Preview
 
 
 class TranscriptDAO:
@@ -163,9 +164,10 @@ class Transcript(TranscriptDAO):
             self.messages.reverse()
 
         try:
-            return await super().build_transcript()
+            transcript = await super().build_transcript()
+            preview = await Preview(self.channel, self.limit, pytz_timezone=self.pytz_timezone).build_preview()
+            return preview + transcript.html
         except Exception:
             self.html = "Whoops! Something went wrong..."
             traceback.print_exc()
-            print("Please send a screenshot of the above error to https://www.github.com/mahtoid/DiscordChatExporterPy")
             return self

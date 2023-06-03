@@ -10,6 +10,7 @@ async def quick_export(
     channel: discord.TextChannel,
     guild: Optional[discord.Guild] = None,
     bot: Optional[discord.Client] = None,
+    preview: Optional[bool] = False,
 ):
     """
     Create a quick export of your Discord channel.
@@ -17,6 +18,7 @@ async def quick_export(
     :param channel: discord.TextChannel
     :param guild: (optional) discord.Guild
     :param bot: (optional) discord.Client
+    :param preview: (optional) boolean - generate text transcript in html as preview
     :return: discord.Message (posted transcript)
     """
 
@@ -36,7 +38,7 @@ async def quick_export(
             support_dev=True,
             bot=bot,
             ).export()
-        ).html
+        )
 
     if not transcript:
         return
