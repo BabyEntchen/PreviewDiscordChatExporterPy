@@ -189,7 +189,7 @@ class Transcript(TranscriptDAO):
             self.messages.reverse()
 
         try:
-            transcript = await self.build_transcript()
+            transcript = await super().build_transcript()
             if self.preview:
                 transcript = await Preview(self.channel, self.limit, pytz_timezone=self.pytz_timezone).build_preview() + transcript.html
             return transcript
