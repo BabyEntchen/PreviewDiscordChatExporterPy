@@ -8,30 +8,17 @@
 [![GPL License][license-shield]][license-url]
 
 
-  <h2>DiscordChatExporterPy</h2>
+  <h2>PreviewDiscordChatExporterPy</h2>
 
   <p>
-    Export Discord chats with your discord.py (or fork) bots!
-    <br />
-    <a href="https://discord.mahto.id/">Join Discord</a>
-    ·
-    <a href="https://github.com/mahtoid/DiscordChatExporterPy/issues/new?assignees=&labels=bug&template=bug-report.yml">Report Bug</a>
-    ·
-    <a href="https://github.com/mahtoid/DiscordChatExporterPy/issues/new?assignees=&labels=enhancement&template=feature-request.yml">Request Feature</a>
-  </p>
-</div>
+    An extension library for DiscordChatExporterPy
 
 ---
 ## Installation
 
-To install the library to your virtual environment, for bot usage, run the command:
-```sh 
-pip install chat-exporter
-```
-
 To clone the repository locally, run the command:
 ```sh
-git clone https://github.com/mahtoid/DiscordChatExporterPy
+git clone https://github.com/BabyEntchen/PreviewDiscordChatExporterPy
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
