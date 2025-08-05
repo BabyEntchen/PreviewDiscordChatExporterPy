@@ -120,6 +120,20 @@ async def export(
             attachment_handler=attachment_handler,
             preview=preview
         ).export()
+    ) if preview else (
+        await Transcript(
+            channel=channel,
+            limit=limit,
+            messages=None,
+            pytz_timezone=tz_info,
+            military_time=military_time,
+            fancy_times=fancy_times,
+            before=before,
+            after=after,
+            support_dev=support_dev,
+            bot=bot,
+            attachment_handler=attachment_handler
+        ).export()
     ).html
 
 
