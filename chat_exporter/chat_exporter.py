@@ -84,6 +84,7 @@ async def export(
     after: Optional[datetime.datetime] = None,
     support_dev: Optional[bool] = True,
     attachment_handler: Optional[AttachmentHandler] = None,
+    preview: Optional[bool] = False,
 ):
     """
     Create a customised transcript of your Discord channel.
@@ -98,6 +99,7 @@ async def export(
     :param before: (optional) datetime.datetime - allows before time for history
     :param after: (optional) datetime.datetime - allows after time for history
     :param attachment_handler: (optional) attachment_handler.AttachmentHandler - allows custom asset handling
+    :param preview: (optional) boolean - if True, will return a preview within the HTML file of the transcript
     :return: string - transcript file make up
     """
     if guild:
@@ -116,6 +118,7 @@ async def export(
             support_dev=support_dev,
             bot=bot,
             attachment_handler=attachment_handler,
+            preview=preview
         ).export()
     ).html
 

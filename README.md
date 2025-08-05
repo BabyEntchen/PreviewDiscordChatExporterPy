@@ -15,7 +15,10 @@
 
 ---
 ## Installation
-
+To use repository install via pip and git:
+```sh
+pip install git+https://github.com/BabyEntchen/PreviewDiscordChatExporterPy
+```
 To clone the repository locally, run the command:
 ```sh
 git clone https://github.com/BabyEntchen/PreviewDiscordChatExporterPy
