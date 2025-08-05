@@ -7,6 +7,22 @@ from chat_exporter.ext.discord_import import discord
 from chat_exporter.construct.attachment_handler import AttachmentHandler, AttachmentToLocalFileHostHandler, AttachmentToDiscordChannelHandler
 
 
+async def preview_quick_export(
+    channel: discord.TextChannel,
+    guild: Optional[discord.Guild] = None,
+    bot: Optional[discord.Client] = None,
+):
+    """ Create a quick export preview of your Discord channel.
+    This function will produce the transcript and a preview in the channel.
+    :param channel: discord.TextChannel
+    :param guild: (optional) discord.Guild
+    :param bot: (optional) discord.Client
+    :return: discord.Message (posted transcript preview)
+    """
+
+
+
+
 async def quick_export(
     channel: discord.TextChannel,
     guild: Optional[discord.Guild] = None,

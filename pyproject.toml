@@ -29,7 +29,7 @@ classifiers = [
     "Topic :: Utilities",
     "Typing :: Typed",
 ]
-dependencies = ["aiohttp", "pytz", "grapheme", "emoji"]
+dependencies = ["aiohttp", "pytz", "grapheme", "emoji", "string_py"]
 keywords = ["chat exporter", "discord chat exporter", "discord", "discordpy", "disnake", "pycord", "nextcord"]
 
 [project.urls]

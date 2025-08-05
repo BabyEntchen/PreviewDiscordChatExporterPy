@@ -13,6 +13,7 @@ from chat_exporter.ext.discord_import import discord
 from chat_exporter.construct.message import gather_messages
 from chat_exporter.construct.assets.component import Component
 
+from chat_exporter.ext.preview import Preview
 from chat_exporter.ext.cache import clear_cache
 from chat_exporter.parse.mention import pass_bot
 from chat_exporter.ext.discord_utils import DiscordUtils
@@ -37,6 +38,7 @@ class TranscriptDAO:
         support_dev: bool,
         bot: Optional[discord.Client],
         attachment_handler: Optional[AttachmentHandler],
+        preview: bool = False,
     ):
         self.channel = channel
         self.messages = messages
@@ -186,7 +188,9 @@ class Transcript(TranscriptDAO):
             self.messages.reverse()
 
         try:
-            return await super().build_transcript()
+            preview = await Preview(self.channel, self.limit, pytz_timezone=self.pytz_timezone).build_preview()
+            transcript = await self.build_transcript()
+            return await preview + transcript
         except Exception:
             self.html = "Whoops! Something went wrong..."
             traceback.print_exc()
