@@ -19,6 +19,7 @@ async def preview_quick_export(
     :param bot: (optional) discord.Client
     :return: discord.Message (posted transcript preview)
     """
+    await quick_export(channel, guild, bot, preview=True)
 
 
 
@@ -27,6 +28,7 @@ async def quick_export(
     channel: discord.TextChannel,
     guild: Optional[discord.Guild] = None,
     bot: Optional[discord.Client] = None,
+    preview: Optional[bool] = False,
 ):
     """
     Create a quick export of your Discord channel.
@@ -34,6 +36,7 @@ async def quick_export(
     :param channel: discord.TextChannel
     :param guild: (optional) discord.Guild
     :param bot: (optional) discord.Client
+    :param preview: (optional) boolean - if True, will  return a preview within the HTML file of the transcript
     :return: discord.Message (posted transcript)
     """
 
@@ -52,7 +55,8 @@ async def quick_export(
             after=None,
             support_dev=True,
             bot=bot,
-            attachment_handler=None
+            attachment_handler=None,
+            preview=preview
             ).export()
         ).html
 

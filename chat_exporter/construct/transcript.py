@@ -50,6 +50,7 @@ class TranscriptDAO:
         self.support_dev = support_dev
         self.pytz_timezone = pytz_timezone
         self.attachment_handler = attachment_handler
+        self.preview = preview
 
         # This is to pass timezone in to mention.py without rewriting
         setattr(discord.Guild, "timezone", self.pytz_timezone)
@@ -188,11 +189,12 @@ class Transcript(TranscriptDAO):
             self.messages.reverse()
 
         try:
-            preview = await Preview(self.channel, self.limit, pytz_timezone=self.pytz_timezone).build_preview()
             transcript = await self.build_transcript()
-            return await preview + transcript
+            if self.preview:
+                transcript = await Preview(self.channel, self.limit, pytz_timezone=self.pytz_timezone).build_preview() + transcript
+            return transcript
         except Exception:
             self.html = "Whoops! Something went wrong..."
             traceback.print_exc()
-            print("Please send a screenshot of the above error to https://www.github.com/mahtoid/DiscordChatExporterPy")
+            print("Please send a screenshot of the above error to https://github.com/BabyEntchen/PreviewDiscordChatExporterPy#")
             return self
