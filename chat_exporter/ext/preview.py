@@ -4,14 +4,18 @@ from string_py import Format
 
 
 def generate_embed(embed: dict):
-    return Format.embed(
-        title=embed.get("title"),
-        description=embed.get("description"),
-        footer=embed.get("footer"),
-        author=embed.get("author"),
-        image=embed.get("image"),
-        fields=embed.get("fields")
-    )
+    try:
+        embed = Format.embed(
+            title=embed.get("title"),
+            description=embed.get("description"),
+            footer=embed.get("footer"),
+            author=embed.get("author"),
+            image=embed.get("image"),
+            fields=embed.get("fields")
+        )
+    except Exception as e:
+        embed = f"Error generating embed: {e}\nEmbed data: {embed}"
+    return embed
 
 
 class Preview:
