@@ -48,8 +48,11 @@ class Preview:
             for attachment in raw_message.attachments:
                 generated_message += attachment.url + "\n"
 
-
-        return Format.surround(generated_message)
+        try:
+            message = Format.surround(generated_message)
+        except Exception as e:
+            message = f"Error generating message: {e}\nMessage data: {generated_message}"
+        return message
 
     async def build_preview(self):
         if not self.messages:
